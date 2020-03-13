@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EspressoTest</string>
+    <string name="app_name">EspressoUITestExamples</string>
     <string name="text_next">Next</string>
     <string name="text_start">Start</string>
     <string name="text_next_fragment">Next fragment</string>
@@ -16,4 +16,5 @@
     <string name="text_directors">Directors:</string>
     <string name="text_star_actors">Star Actors:</string>
     <string name="text_select_image_from_gallery">Select an image from gallery</string>
+    <string name="text_launch_camera">Launch camera</string>
 </resources>
