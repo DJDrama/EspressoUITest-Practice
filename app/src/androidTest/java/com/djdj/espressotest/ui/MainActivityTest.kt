@@ -8,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import com.djdj.espressotest.R
+import com.djdj.espressotest.ui.MainActivity.Companion.buildToastMessage
 import kotlinx.android.synthetic.main.activity_main.view.*
 import org.hamcrest.CoreMatchers.not
 import org.junit.Assert.*
@@ -19,7 +20,7 @@ class MainActivityTest {
     fun test_showDialog_captureNameInput() {
         //GIVEN
         val activityScenario = ActivityScenario.launch(MainActivity::class.java)
-        val EXPECTED_NAME = "DONGSTER"
+        val NAME = "DONGSTER"
 
         //Execute and Verify
         onView(withId(R.id.button_launch_dialog)).perform(click())
@@ -28,14 +29,19 @@ class MainActivityTest {
         onView(withText(R.string.text_enter_name)).check(matches(isDisplayed()))
 
         //enter same input
-        onView(withId(R.id.md_input_message)).perform(typeText(EXPECTED_NAME))
+        onView(withId(R.id.md_input_message)).perform(typeText(NAME))
         onView(withText(R.string.text_ok)).perform(click())
 
         //make sure dialog is gone
         onView(withText(R.string.text_enter_name)).check(doesNotExist())
 
         //confirm name is set to TextView in activity
-        onView(withId(R.id.text_name)).check(matches(withText(EXPECTED_NAME)))
+        onView(withId(R.id.text_name)).check(matches(withText(NAME)))
 
+
+        //test if toast is displayed
+        onView(withText(buildToastMessage(NAME)))
+            .inRoot(ToastMatcher())
+            .check(matches(isDisplayed()))
     }
 }
