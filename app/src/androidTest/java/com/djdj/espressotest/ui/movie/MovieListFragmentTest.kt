@@ -24,15 +24,17 @@ class MovieListFragmentTest{
     val LIST_ITEM_IN_TEST = 4
     val MOVIE_IN_TEST = FakeMovieData.movies[LIST_ITEM_IN_TEST]
 
+    @get: Rule
+    val espressoIdlingResourceRule = EspressoIdlingResource()
 
-    @Before
-    fun registerIdlingResource(){
-        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
-    }
-    @After
-    fun unregisterIdlingResource(){
-        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
-    }
+//    @Before
+//    fun registerIdlingResource(){
+//        IdlingRegistry.getInstance().register(EspressoIdlingResource.countingIdlingResource)
+//    }
+//    @After
+//    fun unregisterIdlingResource(){
+//        IdlingRegistry.getInstance().unregister(EspressoIdlingResource.countingIdlingResource)
+//    }
 
     @Test
     fun a_test_isListFragmentVisible_onAppLaunch() {
