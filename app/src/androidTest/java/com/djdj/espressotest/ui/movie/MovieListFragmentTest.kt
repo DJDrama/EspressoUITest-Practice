@@ -10,17 +10,13 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import com.djdj.espressotest.R
 import com.djdj.espressotest.data.FakeMovieData
-import com.djdj.espressotest.ui.movie.DirectorsFragment.Companion.stringBuilderForDirectors
-import com.djdj.espressotest.ui.movie.MoviesListAdapter.*
+import com.djdj.espressotest.ui.movie.MoviesListAdapter.MovieViewHolder
 import com.djdj.espressotest.util.EspressoIdlingResource
-import kotlinx.android.synthetic.main.fragment_movie_list.view.*
 import org.hamcrest.Matchers.not
-import org.junit.After
-import org.junit.Assert.*
-import org.junit.Before
-import org.junit.Rule
-import org.junit.Test
+import org.junit.*
+import org.junit.runners.MethodSorters
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING) //alphabetical order
 class MovieListFragmentTest{
 
     @get: Rule //relaunching
@@ -41,7 +37,6 @@ class MovieListFragmentTest{
     @Test
     fun a_test_isListFragmentVisible_onAppLaunch() {
         onView(withId(R.id.recycler_view)).check(matches(isDisplayed()))
-
         onView(withId(R.id.progress_bar)).check(matches(not(isDisplayed())))
     }
 
